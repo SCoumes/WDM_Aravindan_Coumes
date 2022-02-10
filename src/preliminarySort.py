@@ -21,7 +21,7 @@ def test_field(article, fieldname) :
     return fieldname in article["fieldsOfStudy"]
 
 # First writeup 
-def filter_data(fieldname, datapath, new_datapath, temp_path, filesize = 100) :
+def filter_data(fieldname, datapath, new_datapath, temp_path, filesize = 1000) :
     """Get all articles contained in datapath to new files in new_datapath"""
     temp_file = temp_path + "/temp.json"
     to_read = utilitary.listfiles(datapath)
@@ -33,8 +33,8 @@ def filter_data(fieldname, datapath, new_datapath, temp_path, filesize = 100) :
         for article in utilitary.read_json_list(temp_file) :
             if test_field(article, fieldname) :
                 to_write.append(article)
-        if len(to_write) > filesize :
-            utilitary.write_json(to_write, new_datapath + "/data_" + str(written) + ".json")
-            written += 1
-            to_write = []
+            if len(to_write) > filesize :
+                utilitary.write_json(to_write, new_datapath + "/data_" + str(written) + ".json")
+                written += 1
+                to_write = []
     utilitary.write_json(to_write, new_datapath + "/data_" + str(written) + ".json")
