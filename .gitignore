@@ -5,6 +5,9 @@ __pycache__/
 
 # test folder
 temp/
+=======
+# Test data
+test/filtered_test_data/*
 
 # C extensions
 *.so
