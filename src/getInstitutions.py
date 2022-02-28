@@ -1,10 +1,10 @@
 import utilitary
 import json
 
-def addArticleInstitutions(table, article) :
+def addArticleInstitutions(table, article queryFunction) :
     for author in article["authors"] :
         authorName = author["name"]
-        institutions = oneQuery(authorName, article["title"])
+        institutions = queryFunction(authorName, article["title"])
         if authorName in table.keys() : 
             institutions = institutions + table[authorName]
             table.update({authorName : institutions})
