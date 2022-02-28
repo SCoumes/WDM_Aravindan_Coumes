@@ -6,6 +6,7 @@ import shutil
 import json
 
 def decompress(inpath, outpath) :
+    print(inpath, outpath)
     with gzip.open(inpath, 'rb') as f_in:
         with open(outpath, 'wb') as f_out:
             shutil.copyfileobj(f_in, f_out)
