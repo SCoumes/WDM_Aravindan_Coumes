@@ -3,8 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# All .swp files
+*.swp
+
 # test folder
-temp/
+temp/*
 
 # presentation compilation files
 presentation/*.aux  
@@ -17,6 +20,7 @@ presentation/*.toc
 
 # Test data
 test/filtered_test_data/*
+test/institutions/*
 
 # C extensions
 *.so
