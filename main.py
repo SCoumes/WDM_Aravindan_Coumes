@@ -6,7 +6,11 @@ sys.path.append("src")
 args = sys.argv
 
 if len(args) <= 1 :
-    print("Please specify a command")
+    print("Please specify a command.")
+    print("Usage recap : ")
+    print(" sample datapath tempdir nbr_samples")
+    print("filter datapath tempdir targetpath fieldname")
+    print("compute_institutions datapath institutionpath")
 elif args[1] == "sample" :
     from  preliminarySort import getfields
     datapath = args[2]
@@ -22,6 +26,12 @@ elif args[1] == "filter" :
     fieldname = args[5]
     clean_folder(new_datapath) 
     filter_data(fieldname, datapath, new_datapath, temp_path)
+elif args[1] == "compute_institutions" :
+    from getInstitutions import putInstitutionsOnDisk as compInsti
+    from utilitary import clean_folder
+    datapath = args[2]
+    institupath = args[3]
+    compInsti(datapath, institupath)
 else : 
     print("Unknown command")
 
