@@ -1,6 +1,6 @@
 from serpapi import GoogleSearch
 def queryFunction(title, author):
-        string = '+'.join(str.split(title).append) + "+" + str('+'.join(str.split(author).append))   
+        string = '+'.join(str.split(title).append) + "+" + '+'.join(str.split(author))  
         params = {
             "engine": "google_scholar",
             "q": string,
@@ -22,4 +22,4 @@ def queryFunction(title, author):
             results = search.get_dict()
             intermediate['affiliations'] = results['author']['affiliations']
             Institutes[each['author_id']]  =  intermediate
-        return Institutes
+    return Institutes
