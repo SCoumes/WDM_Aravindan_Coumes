@@ -19,6 +19,14 @@ def testArtToAuth() :
     putTableOnDisk("test/filtered_test_data", "test/ArtToAuth")
     print("Ok on disk")
     print(getTableFromDisk("test/ArtToAuth"))
+
+def testCitationCount() :
+    from citationCount import putTableOnDisk, getTableFromDisk
+    from buildArtToAuth import getTableFromDisk as ata
+    artToAuth = ata("test/ArtToAuth")
+    putTableOnDisk("test/filtered_test_data", "test/CitationCount.json", artToAuth)
+    print("Ok on disk")
+    print(getTableFromDisk("test/CitationCount.json"))
     
 def testAll() :
     print("test filter")

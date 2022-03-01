@@ -21,6 +21,7 @@ presentation/*.toc
 # Test data
 test/filtered_test_data/*
 test/institutions/*
+test/*.json
 
 # C extensions
 *.so

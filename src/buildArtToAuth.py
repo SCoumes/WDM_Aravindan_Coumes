@@ -10,11 +10,11 @@ def buildTable(datapath) :
             authors = []
             for author in article["authors"] :
                 try :
-                    authID = int(author["ids"][0])
+                    authID = author["ids"][0]
                     authors.append(authID)
                 except Exception :
                     pass
-            ID = int(article["id"], 16)
+            ID = article["id"]
             table.update({ID : authors})
     return table
 

@@ -21,6 +21,8 @@ elif args[1] == "test" :
         test.testInstitutions()
     elif args[2] == "artToAuth" :
         test.testArtToAuth()
+    elif args[2] == "citationCount" :
+        test.testCitationCount()
     else :
         print("Unknown test")
 elif args[1] == "sample" :

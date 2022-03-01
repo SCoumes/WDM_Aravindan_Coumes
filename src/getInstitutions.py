@@ -12,7 +12,7 @@ def addArticleInstitutions(tableAffiliations, authorID, authorName, articleTitle
 
 def addAuthorToTable(author, table, article) :
     try :
-        ID = int(author["ids"][0])
+        ID = author["ids"][0]
         if ID in table.keys() :
             pass
         else :
@@ -54,7 +54,6 @@ def putInstitutionsOnDisk(datapath, institupath) :
             filecount += 1
     with open(institupath + "/authorInstitutions_" + str(filecount) + ".json", "w") as f :
         json.dump(fileDict, f)
-
 
 def getInstitutionsFromDisk(institupath) :
     """The main function to get the list of institutions affiliations as a dict form what is written on disk"""

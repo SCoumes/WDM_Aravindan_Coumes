@@ -1,3 +1,6 @@
+import utilitary
+import json
+
 def incrTable(id1, id2, table) :
     if id1 not in table.keys() :
         table.update({id1 : {id2 : 1}})
@@ -9,7 +12,7 @@ def incrTable(id1, id2, table) :
 def updateCount(citingAuthors, citedAuthors, table) :
     for author in citingAuthors :
         try :
-            citingID = int(author["ids"][0])
+            citingID = author["ids"][0]
         except Exception :
             continue
         for citedID in citedAuthors :
@@ -21,17 +24,19 @@ def buildCitationTable(datapath, artToAuth) :
 
     for f in all_files :
         for article in utilitary.read_json_list(f) :
-            for ID in article["outCitations"] :
-                artID = int(ID, 16)
+            for artID in article["outCitations"] :
+                try :
+                    citedAuthors = artToAuth[artID]
+                except Exception :
+                    continue
                 citingAuthors = article["authors"]
-                citedAuthors = artToAuth[artID]
                 updateCount(citingAuthors, citedAuthors, table)
 
     return table
 
 def putTableOnDisk(datapath, targetpath, artToAuth) :
     """Contrary to other disk IO functions. The targetpath here is a file, not a dir"""
-    filedict = buildCitationTable(datapath, artToAuth)
+    fileDict = buildCitationTable(datapath, artToAuth)
     with open(targetpath, "w") as f :
         json.dump(fileDict, f)
 
