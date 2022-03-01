@@ -1,3 +1,5 @@
+import json
+
 def secondHighest(hm) :
     maxkey = None
     maxval = 0
