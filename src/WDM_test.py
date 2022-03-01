@@ -16,15 +16,15 @@ def testInstitutions() :
 
 def testArtToAuth() :
     from buildArtToAuth import putTableOnDisk, getTableFromDisk
-    putTableOnDisk("test/filtered_test_data", "test/ArtToAuth")
+    putTableOnDisk("test/filtered_test_data", "test/artToAuth")
     print("Ok on disk")
-    print(getTableFromDisk("test/ArtToAuth"))
+    print(getTableFromDisk("test/artToAuth"))
 
 def testCitationCount() :
     from citationCount import putTableOnDisk, getTableFromDisk
     from buildArtToAuth import getTableFromDisk as ata
-    artToAuth = ata("test/ArtToAuth")
-    putTableOnDisk("test/filtered_test_data", "test/CitationCount.json", artToAuth)
+    artToAuth = ata("test/artToAuth")
+    putTableOnDisk("test/filtered_test_data", "test/CitationCount.json", artToAuth, [1990, 2000, 2010])
     print("Ok on disk")
     print(getTableFromDisk("test/CitationCount.json"))
     
