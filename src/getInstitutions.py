@@ -8,7 +8,7 @@ def addArticleInstitutions(tableAffiliations, authorID, authorName, articleTitle
                 institutions = queryFunction(articleTitle, authorName)
                 tableAffiliations.update({authorID : institutions})
             except Exception as _e:
-               pass
+               raise _e
 
 def addAuthorToTable(author, table, article) :
     try :
