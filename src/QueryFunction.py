@@ -1,10 +1,9 @@
 def queryFunction(title, author):
-    with open(path,  encoding='utf-8', mode='a') as file:
         string = '+'.join(str.split(title).append) + "+" + str('+'.join(str.split(author).append))   
         params = {
-        "engine": "google_scholar",
-        "q": string,
-        "api_key": "255dc7fe9dd992e9626160a1d48557435eacc85f8445f9bbf0d624142d9cfd8d"
+            "engine": "google_scholar",
+            "q": string,
+            "api_key": "255dc7fe9dd992e9626160a1d48557435eacc85f8445f9bbf0d624142d9cfd8d"
         }
         search = GoogleSearch(params)
         results = search.get_dict()
