@@ -20,8 +20,7 @@ def updateCount(citingAuthors, citedAuthors, table) :
         for citedID in citedAuthors :
             incrTable(citingID,citedID, table)
 
-def getTimePeriod(timePeriods, year_str) :
-    year = int(year_str)
+def getTimePeriod(timePeriods, year) :
     for index, val in enumerate(timePeriods) :
         if val > year : return index
     return len(timePeriods)
@@ -33,7 +32,11 @@ def buildCitationTables(datapath, artToAuth, timePeriods) :
 
     for f in all_files :
         for article in utilitary.read_json_list(f) :
-            table = tables[getTimePeriod(timePeriods, article["year"])]
+            try :
+                year = int(article["year"])
+            except Exception :
+                continue
+            table = tables[getTimePeriod(timePeriods, year)]
             for artID in article["outCitations"] :
                 try :
                     citedAuthors = artToAuth[artID]
