@@ -15,9 +15,9 @@ def getCandidates(author, authorCitations) :
    minval = authorCitations["total"] // 2 - maxval
    candidates = [(maxkey, maxval)]
    for key in authorCitations.keys() :
-       val = authorCitations[key]
+       val = int(authorCitations[key])
        if key < author : continue
-       if val >= minval : candidates.append(key)
+       if val >= minval : candidates.append((key, val))
    return candidates
 
 def checkRing(table, mainAuth, candi1, candi2) :
