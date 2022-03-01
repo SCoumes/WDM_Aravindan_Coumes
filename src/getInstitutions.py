@@ -11,7 +11,7 @@ def addArticleInstitutions(tableAffiliations, authorID, authorName, articleTitle
 
 def addAuthorToTable(author, table, article) :
     try :
-        ID = author["ids"][0]
+        ID = int(author["ids"][0])
         if ID in table.keys() :
             pass
         else :
