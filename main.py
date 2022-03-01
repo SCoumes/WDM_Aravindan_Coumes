@@ -46,6 +46,11 @@ elif args[1] == "compute_institutions" :
     datapath = args[2]
     institupath = args[3]
     compInsti(datapath, institupath)
+elif args[1] == "artToAuth" :
+    from buildArtToAuth import putTableOnDisk
+    datapath = args[2]
+    targetpath = args[3]
+    putTableOnDisk(datapath, targetpath) :
 else : 
     print("Unknown command")
 
