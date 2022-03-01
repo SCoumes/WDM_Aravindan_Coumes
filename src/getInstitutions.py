@@ -1,30 +1,40 @@
 import utilitary
 import json
 
-def addArticleInstitutions(table, article queryFunction) :
-    for author in article["authors"] :
-        authorName = author["name"]
-        institutions = queryFunction(authorName, article["title"])
-        if authorName in table.keys() : 
-            institutions = institutions + table[authorName]
-            table.update({authorName : institutions})
-        else : 
-            table.update({authorName : institutions})
+def addArticleInstitutions(tableAffiliations, authorID, authorName, articleTitle) :
+            queryFunction = lambda name, paper : ["The cheese alliance"] #TODO move to Priyanka function here
+            institutions = queryFunction(authorName, articleTitle)
+            tableAffiliations.update({authorID : institutions})
 
-def getInstitutions(datapath, queryFunction) : 
+def addAuthorToTable(author, table, article) :
+    try :
+        ID = author["ids"][0]
+        if ID in table.keys() :
+            pass
+        else :
+            table.update({ID : (author["name"], article["title"])})
+    except Exception :
+        pass
+
+def getInstitutions(datapath) : 
     all_files = utilitary.listfiles(datapath)
-    table = dict() #Meant to contain pairs (author, list_of_instituions)
+    tableAffiliations = dict() #Meant to contain pairs (author_id, list_of_instituions)
+    authorsTable = dict()
 
     for f in all_files :
         for article in utilitary.read_json_list(f) :
-            addArticleInstitutions(table, article)
+            for author in article["authors"] :
+                addAuthorToTable(author, authorsTable, article)
+    
+    for authorID in authorsTable.keys() :
+        authorName, articleTitle = authorsTable[authorID]
+        addArticleInstitutions(tableAffiliations, authorID, authorName, articleTitle)
 
-    return table
+    return tableAffiliations
 
 def putInstitutionsOnDisk(datapath, institupath) :
     """The main function to use to treat the data and list all institutions. Saves on disk."""
-    queryFunction = lambda name, paper : ["The cheese alliance"] #TODO move to Priyanka function here
-    table = getInstitutions(datapath, queryFunction)
+    table = getInstitutions(datapath)
     fileDict = dict()
     sizecount = 0
     filecount = 0
@@ -50,13 +60,13 @@ def getInstitutionsFromDisk(institupath) :
 
     return table
 
-#def oneQuery(name, articleName) :
-#    """ Fake function, for the time being"""
-#    return ["The very serious institution for cheese"]
+def oneQuery(name, articleName) :
+    """ Fake function, for the time being"""
+    return ["The very serious institution for cheese"]
+
 #
 #
-#
-## print(getInstitutions("../test/filtered_test_data", oneQuery))
-#putInstitutionsOnDisk("../test/filtered_test_data", "../test/institutions", oneQuery)
-#print("Ok on disk")
-#print(getInstitutionsFromDisk("../test/institutions"))
+# print(getInstitutions("../test/filtered_test_data", oneQuery))
+putInstitutionsOnDisk("../test/filtered_test_data", "../test/institutions")
+print("Ok on disk")
+print(getInstitutionsFromDisk("../test/institutions"))
