@@ -2,9 +2,12 @@ import utilitary
 import json
 
 def addArticleInstitutions(tableAffiliations, authorID, authorName, articleTitle) :
-            queryFunction = lambda name, paper : ["The cheese alliance"] #TODO move to Priyanka function here
-            institutions = queryFunction(authorName, articleTitle)
-            tableAffiliations.update({authorID : institutions})
+            try : 
+                queryFunction = lambda name, paper : ["The cheese alliance"] #TODO move to Priyanka function here
+                institutions = queryFunction(authorName, articleTitle)
+                tableAffiliations.update({authorID : institutions})
+            except Exception :
+                pass
 
 def addAuthorToTable(author, table, article) :
     try :
