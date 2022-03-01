@@ -16,7 +16,7 @@ def getCandidates(author, authorCitations) :
    for key, val in authorCitations :
        if key < author : continue
        if val >= minval : candidates.append(key)
-    return candidates
+   return candidates
 
 def checkRing(table, mainAuth, candi1, candi2) :
     if (table[candi1][mainAuth] + table[candi1][candi2]) * 2 < table[candi1]["total"] : return False
