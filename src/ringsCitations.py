@@ -44,7 +44,7 @@ def getRings(citationCountTable) :
     return allRings  
 
 def putListOnDisk(citationCountTable, targetpath) :
-    fileList = getRings(citationcountTable)
+    fileList = getRings(citationCountTable)
     with open(targetpath, "w") as f :
         json.dump(fileList, f)
 
