@@ -2,14 +2,14 @@ import utilitary
 import json
 
 def incrTable(id1, id2, table) :
-    if id1 not in table.keys() :
-        table.update({id1 : {id2 : 1, "total" : 1}})
-    elif id2 not in table[id1].keys() :
-        table[id1].update({id2 : 1})
-        table[id1]["total"] += 1
+    if id2 not in table.keys() :
+        table.update({id2 : {id1 : 1, "total" : 1}})
+    elif id1 not in table[id2].keys() :
+        table[id2].update({id1 : 1})
+        table[id2]["total"] += 1
     else :
-        table[id1][id2] += 1
-        table[id1]["total"] += 1
+        table[id2][id1] += 1
+        table[id2]["total"] += 1
 
 def updateCount(citingAuthors, citedAuthors, table) :
     for author in citingAuthors :
@@ -27,6 +27,7 @@ def getTimePeriod(timePeriods, year_str) :
     return len(timePeriods)
 
 def buildCitationTables(datapath, artToAuth, timePeriods) : 
+    """ This returns a list of two dimensional tables. For T a table we have T[A][B] the number of citations that A received from B and T[A][total] the total number of citations received by A."""
     all_files = utilitary.listfiles(datapath)
     tables = [dict() for _ in timePeriods] + [dict()]
 
