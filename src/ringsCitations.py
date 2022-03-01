@@ -21,9 +21,12 @@ def getCandidates(author, authorCitations) :
    return candidates
 
 def checkRing(table, mainAuth, candi1, candi2) :
-    if (table[candi1][mainAuth] + table[candi1][candi2]) * 2 < table[candi1]["total"] : return False
-    if (table[candi2][mainAuth] + table[candi2][candi1]) * 2 < table[candi2]["total"] : return False
-    return True
+    try : 
+        if (table[candi1][mainAuth] + table[candi1][candi2]) * 2 < table[candi1]["total"] : return False
+        if (table[candi2][mainAuth] + table[candi2][candi1]) * 2 < table[candi2]["total"] : return False
+        return True
+    except Exception :
+        return False
 
 def getRingsFromCandidates(table, author, candidates) :
     ringList = []
