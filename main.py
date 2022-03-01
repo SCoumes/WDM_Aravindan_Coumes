@@ -62,13 +62,13 @@ elif args[1] == "citation_count" :
     timePeriods = [1990, 2000, 2010]
     putTableOnDisk(datapath, targetpath, artToAuth, timePeriods)
 elif args[1] == "citation_rings" :
-    from ringsCitations import putListOnDisk
+    from ringsCitations import putListsOnDisk
     from citationCount import getTableFromDisk
     citacountpath = args[2]
     targetpath = args[3]
 
     citationCount = getTableFromDisk(citacountpath)
-    putListOnDisk(citationCount, targetpath)
+    putListsOnDisk(citationCount, targetpath)
 else : 
     print("Unknown command")
 
