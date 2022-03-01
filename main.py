@@ -11,6 +11,12 @@ if len(args) <= 1 :
     print(" sample datapath tempdir nbr_samples")
     print("filter datapath tempdir targetpath fieldname")
     print("compute_institutions datapath institutionpath")
+elif args[1] == "test" :
+    import tests
+    if args[2] == "institutions" :
+        tests.testInstitutions()
+    else :
+        print("Unknown test")
 elif args[1] == "sample" :
     from  preliminarySort import getfields
     datapath = args[2]

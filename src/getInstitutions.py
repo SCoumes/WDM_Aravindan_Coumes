@@ -1,13 +1,14 @@
 import utilitary
 import json
+import QueryFunction
 
 def addArticleInstitutions(tableAffiliations, authorID, authorName, articleTitle) :
             try : 
-                queryFunction = lambda name, paper : ["The cheese alliance"] #TODO move to Priyanka function here
-                institutions = queryFunction(authorName, articleTitle)
+                queryFunction = QueryFunction.queryFunction
+                institutions = queryFunction(articleTitle, authorName)
                 tableAffiliations.update({authorID : institutions})
-            except Exception :
-                pass
+            except Exception as _e:
+               pass
 
 def addAuthorToTable(author, table, article) :
     try :
@@ -70,6 +71,6 @@ def oneQuery(name, articleName) :
 #
 #
 # print(getInstitutions("../test/filtered_test_data", oneQuery))
-putInstitutionsOnDisk("../test/filtered_test_data", "../test/institutions")
-print("Ok on disk")
-print(getInstitutionsFromDisk("../test/institutions"))
+#putInstitutionsOnDisk("../test/filtered_test_data", "../test/institutions")
+#print("Ok on disk")
+#print(getInstitutionsFromDisk("../test/institutions"))
