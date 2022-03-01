@@ -42,7 +42,8 @@ def getRingsFromTable(citationCountTable) :
     for author in table.keys() :
         candidates = getCandidates(author, table[author])
         candidates.sort(key = lambda a : a[1])
-        allRings = allRings + getRingsFromCandidates(table, author, candidates)
+        clean_candidates = [pair[0] for pair in candidates]
+        allRings = allRings + getRingsFromCandidates(table, author, clean_candidates)
     return allRings  
 
 def putListsOnDisk(citationCountTables, targetpath) :
