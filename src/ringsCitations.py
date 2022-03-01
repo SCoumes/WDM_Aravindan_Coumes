@@ -1,7 +1,8 @@
 def secondHighest(hm) :
     maxkey = None
     maxval = 0
-    for key, val in hm :
+    for key in hm.keys() :
+        val = hm[key]
         if val > maxval and key != "total":
             maxval = val
             maxkey = key
@@ -13,7 +14,8 @@ def getCandidates(author, authorCitations) :
    if maxval * 4 < authorCitations["total"] : return [] #We only care about rings of size 3
    minval = authorCitations["total"] // 2 - maxval
    candidates = [(maxkey, maxval)]
-   for key, val in authorCitations :
+   for key in authorCitations.keys() :
+       val = authorCitations[key]
        if key < author : continue
        if val >= minval : candidates.append(key)
    return candidates
