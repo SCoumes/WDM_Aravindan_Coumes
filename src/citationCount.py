@@ -41,7 +41,7 @@ def buildCitationTables(datapath, artToAuth, timePeriods) :
                 citingAuthors = article["authors"]
                 updateCount(citingAuthors, citedAuthors, table)
 
-    return table
+    return tables
 
 def putTableOnDisk(datapath, targetpath, artToAuth, timePeriods) :
     """Contrary to other disk IO functions. The targetpath here is a file, not a dir"""
@@ -51,6 +51,6 @@ def putTableOnDisk(datapath, targetpath, artToAuth, timePeriods) :
 
 def getTableFromDisk(targetpath) :
     with open(targetpath, "r") as f :
-        return json.load(f)
+        return list(json.load(f))
 
  
