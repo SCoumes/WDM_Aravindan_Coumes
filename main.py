@@ -50,7 +50,7 @@ elif args[1] == "artToAuth" :
     from buildArtToAuth import putTableOnDisk
     datapath = args[2]
     targetpath = args[3]
-    putTableOnDisk(datapath, targetpath) :
+    putTableOnDisk(datapath, targetpath)
 else : 
     print("Unknown command")
 
