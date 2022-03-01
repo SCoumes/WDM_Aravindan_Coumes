@@ -1,3 +1,4 @@
+from serpapi import GoogleSearch
 def queryFunction(title, author):
         string = '+'.join(str.split(title).append) + "+" + str('+'.join(str.split(author).append))   
         params = {
