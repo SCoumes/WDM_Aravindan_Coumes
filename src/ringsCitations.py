@@ -49,6 +49,7 @@ def putListsOnDisk(citationCountTables, targetpath) :
         fileList = getRings(citationCountTables)
         with open(targetpath + "/rings_" + str(count) + ".json", "w") as f :
             json.dump(fileList, f)
+        count += 1
 
 def getTableFromDisk(targetpath) :
     with open(targetpath, "r") as f :
