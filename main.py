@@ -12,9 +12,9 @@ if len(args) <= 1 :
     print("filter datapath tempdir targetpath fieldname")
     print("compute_institutions datapath institutionpath")
 elif args[1] == "test" :
-    import tests
+    import WDM_test as test
     if args[2] == "institutions" :
-        tests.testInstitutions()
+        test.testInstitutions()
     else :
         print("Unknown test")
 elif args[1] == "sample" :
