@@ -51,6 +51,16 @@ elif args[1] == "artToAuth" :
     datapath = args[2]
     targetpath = args[3]
     putTableOnDisk(datapath, targetpath)
+elif args[1] == "citation_count" :
+    from buildArtToAuth import getTableFromDisk
+    from citationCount import putTableOnDisk
+    datapath = args[2]
+    arttapath = args[3]
+    targetpath = args[4]
+    
+    artToAuth = getTableFromDisk(arttapath)
+    timePeriods = [1990, 2000, 2010]
+    putTableOnDisk(datapath, targetpath, artToAuth, timePeriods)
 else : 
     print("Unknown command")
 
