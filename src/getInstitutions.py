@@ -52,6 +52,9 @@ def putInstitutionsOnDisk(datapath, institupath) :
             fileDict = dict()
             sizecount = 0
             filecount += 1
+    with open(institupath + "/authorInstitutions_" + str(filecount) + ".json", "w") as f :
+        json.dump(fileDict, f)
+
 
 def getInstitutionsFromDisk(institupath) :
     """The main function to get the list of institutions affiliations as a dict form what is written on disk"""

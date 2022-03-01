@@ -16,7 +16,6 @@ def buildTable(datapath) :
                     pass
             ID = int(article["id"], 16)
             table.update({ID : authors})
-
     return table
 
 def putTableOnDisk(datapath, targetpath) :
@@ -29,11 +28,14 @@ def putTableOnDisk(datapath, targetpath) :
         fileDict.update({ID : authList})
         sizecount += 1
         if sizecount >= 1000 :
-            with open(institupath + "/artToAuth_" + str(filecount) + ".json", "w") as f :
+            with open(targetpath + "/artToAuth_" + str(filecount) + ".json", "w") as f :
                 json.dump(fileDict, f)
             fileDict = dict()
             sizecount = 0
             filecount += 1
+    with open(targetpath + "/artToAuth_" + str(filecount) + ".json", "w") as f :
+        json.dump(fileDict, f)
+
 
 def getTableFromDisk(targetpath) :
     all_files = utilitary.listfiles(targetpath)

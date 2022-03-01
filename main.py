@@ -15,6 +15,8 @@ elif args[1] == "test" :
     import WDM_test as test
     if args[2] == "institutions" :
         test.testInstitutions()
+    elif args[2] == "artToAuth" :
+        test.testArtToAuth()
     else :
         print("Unknown test")
 elif args[1] == "sample" :
