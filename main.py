@@ -13,7 +13,11 @@ if len(args) <= 1 :
     print("compute_institutions datapath institutionpath")
 elif args[1] == "test" :
     import WDM_test as test
-    if args[2] == "institutions" :
+    if args[2] == "all" :
+        test.testAll()
+    elif args[2] == "filter" :
+        test.testFilter()
+    elif args[2] == "institutions" :
         test.testInstitutions()
     elif args[2] == "artToAuth" :
         test.testArtToAuth()
