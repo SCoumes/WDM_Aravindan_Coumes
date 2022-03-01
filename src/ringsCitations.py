@@ -34,8 +34,8 @@ def getRingsFromCandidates(table, author, candidates) :
                 ringList.append((author, candi1, candi2))
     return ringList   
 
-def getRings(citationCountTable) :
-    table = citationCountTable
+def getRingsFromTable(citationCountTable) :
+    table= citationCountTable
     allRings = []
     for author in table.keys() :
         candidates = getCandidates(author, table[author])
@@ -43,10 +43,12 @@ def getRings(citationCountTable) :
         allRings = allRings + getRingsFromCandidates(table, author, candidates)
     return allRings  
 
-def putListOnDisk(citationCountTable, targetpath) :
-    fileList = getRings(citationCountTable)
-    with open(targetpath, "w") as f :
-        json.dump(fileList, f)
+def putListsOnDisk(citationCountTables, targetpath) :
+    count = 0
+    for table in citationCountTables :
+        fileList = getRings(citationCountTables)
+        with open(targetpath + "/rings_" + str(count) + ".json", "w") as f :
+            json.dump(fileList, f)
 
 def getTableFromDisk(targetpath) :
     with open(targetpath, "r") as f :
