@@ -75,6 +75,11 @@ elif args[1] == "self_citation" :
     citacountpath = args[2]
     citationCount = getTableFromDisk(citacountpath)
     printStatsFromTables(citationCount)
+elif args[1] == "parasite" :
+    from main_Parasite import __main_parasite__ as parasite
+    datapath = args[2]
+    maxP = int(args[3])
+    parasite(datapath, maxP)
 else : 
     print("Unknown command")
 
