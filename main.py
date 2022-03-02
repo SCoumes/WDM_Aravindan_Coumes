@@ -69,6 +69,12 @@ elif args[1] == "citation_rings" :
 
     citationCount = getTableFromDisk(citacountpath)
     putListsOnDisk(citationCount, targetpath)
+elif args[1] == "self_citation" :
+    from selfCitation import printStatsFromTables
+    from citationCount import getTableFromDisk
+    citacountpath = args[2]
+    citationCount = getTableFromDisk(citacountpath)
+    printStatsFromTables(citationCountTables)
 else : 
     print("Unknown command")
 
