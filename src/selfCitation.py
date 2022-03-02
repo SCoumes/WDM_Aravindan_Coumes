@@ -2,7 +2,13 @@ import statistics as stat
 
 def selfCitationList(citationCountTable) :
     table = citationCountTable
-    return [table[ID][ID] / table[ID]["total"] for ID in table.keys()]
+    result = []
+    for ID in table.keys() :
+        if ID in table[ID].keys() :
+            result.append(table[ID][ID] / table[ID]["total"])
+        else :
+            result.append(0)
+    return result
 
 def statsFromTable(citationCountTable) :
     L = selfCitationList(citationCountTable)
