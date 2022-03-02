@@ -18,7 +18,7 @@ def getCandidates(author, authorCitations) :
    candidates = [(maxkey, maxval)]
    for key in authorCitations.keys() :
        val = int(authorCitations[key])
-       if key < author : continue
+       if key <= author : continue
        if val >= minval : candidates.append((key, val))
    return candidates
 
