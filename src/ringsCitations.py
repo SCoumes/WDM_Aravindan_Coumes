@@ -15,7 +15,8 @@ def getCandidates(author, authorCitations) :
    if maxkey == None : return [] #Can't be in a ring if you have no citations
    if maxval * 4 < authorCitations["total"] : return [] #We only care about rings of size 3
    minval = authorCitations["total"] // 2 - maxval
-   candidates = [(maxkey, maxval)]
+   candidates = []
+   if maxkey != author : candidates.append((maxkey, maxval))
    for key in authorCitations.keys() :
        val = int(authorCitations[key])
        if key <= author : continue
