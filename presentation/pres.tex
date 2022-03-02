@@ -57,59 +57,156 @@
 \end{frame}
 
 \begin{frame}{Overview}
-  Hello
+  
   \end{frame}
 
 \begin{frame}{Data sources}
-  The plan.
+    \begin{columns}
+    \begin{column}{0.5\textwidth}
+   	Articles and citations : 
+	\begin{itemize}
+	  \item Arxiv
+	  \item Google scholar
+	  \item Semantic scholar
+	\end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}  %%<--- here
+      	Affiliations : 
+        \begin{itemize}
+       	  \item DBLP
+	  \item Google scholar
+	\end{itemize}
+        \end{column}
+    \end{columns}
+
+    \vspace{1cm}
+
+    Due to issues (mostly linked with speed), we were unable to get researchers affiliations.
+
+    \vspace{0.75cm}
+
+    The \textbf{Semantic scholar} database gave us articles and citation.
   \end{frame}
 
-\begin{frame}{Data sources}
-  Isssues.
-  \end{frame}
 
 \begin{frame}{Measures}
-  A teaser.
+  We want to look at :
+  \begin{itemize}
+    \item Citation rings
+    \item Parasites adding their name to too many papers
+    \item Excessive self citation
+  \end{itemize}
   \end{frame}
 
 \begin{frame}{The semantic scholar dataset}
-  Hello
+     \begin{columns}
+    \begin{column}{0.5\textwidth}
+   	Size and limitations : 
+	\begin{itemize}
+	  \item about 150 GB of metadata
+	  \item 10 GB left after filtering only business articles
+	  \item fast queries $\rightarrow$ we can download the whole dataset
+	\end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}  %%<--- here
+      	Structure
+        \begin{itemize}
+       	  \item List of metadata per article
+	  \item All outbound and inbound citations
+	  \item Field
+	  \item Author ID
+	\end{itemize}
+        \end{column}
+    \end{columns}
   \end{frame}
 
 \begin{frame}{Filter the data}
-  Hello
+  A first step was to filter the data and restrain ourselves to articles in the field of business. Total new size : 10 GB. \\
+
+  It is no longer true that all citations point to an article in the database.
   \end{frame}
 
-\begin{frame}{Citation count}
-  Hello
+\begin{frame}{Preprocessing}
+  We compute a few useful lookup tables in advance.
+  
+  \vspace{0.7cm}
+
+  Notably, precompute the matrix of citations from $A$ to $B$ for every pair $(A,B)$ of researchers.
   \end{frame}
 
 \begin{frame}{Citation rings}
-  Explanation.
+  We define a citation ring as a set of 3 authors such that, for each of these authors, most of their citations comme from the others. \\
+
+  Consider four time periods : 
+  \begin{enumerate}
+    \item before 1990
+    \item 1990 - 2000
+    \item 2000 - 2010
+    \item after 2010
+  \end{enumerate}
   \end{frame}
 
 \begin{frame}{Citation rings : algorithm}
-  Hello
+  \begin{itemize}
+      \item For each author $A$ consider all pairs of other authors that together form more than half the citations received by $A$.
+      \item Check if they form a citation ring.
+    \end{itemize}
   \end{frame}
 
 \begin{frame}{citation rings : results}
-  Hello
+
+     \begin{center}
+     \begin{tabular}{||c c||} 
+      \hline
+      Time period & number of rings \\
+      \hline\hline
+      before 1990 & 13 \\ 
+      \hline
+      1990 - 2000 & 48 \\
+      \hline
+      2000 - 2010 & 123 \\
+      \hline
+      after 2010 & 286 \\
+      \hline
+     \end{tabular}
+     \end{center}
+
+     No point in jumping to conclusions. We didn't investigate this.
+
   \end{frame}
 
 \begin{frame}{Self citation}
-  Explain.
+  We look at the ration of self citation over total received citations per author. This is easy thanks to the previous preprocessing. 
+
+    \vspace{0.5cm}
+
+     \begin{center}
+     \begin{tabular}{||c c c c||} 
+      \hline
+      time period & more than half & mean self citation score & median\\
+      \hline\hline
+      before 1990 & 1.6\% & 3.7\% & 0 \\ 
+      \hline
+      1990 - 2000 & 0.9\% & 3\% & 0 \\
+      \hline
+      2000 - 2010 & 0.5\% & 2.2\% & 0 \\
+      \hline
+      after 2010 & 0.2\% & 1.2\% & 0 \\
+      \hline
+     \end{tabular}
+     \end{center}
   \end{frame}
 
-\begin{frame}{Self citation}
-  Results.
-  \end{frame}
-
-\begin{frame}{Parasits}
+\begin{frame}{Parasites}
   Hello
   \end{frame}
 
 \begin{frame}{Conclusion}
-  Hello
+  \begin{itemize}
+    \item Data issues : no institution affiliations
+    \item very heterogenous dataset
+    \item Some suspect results
+  \end{itemize}
   \end{frame}
 
 %\begin{frame}{In a few words}
