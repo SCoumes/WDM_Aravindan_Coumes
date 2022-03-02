@@ -1,8 +1,217 @@
-\documentclass{beamer}
+\documentclass[10pt]{beamer}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{color}
+%\usepackage{colortbl,hhline}
+\usepackage{colortbl}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+%\usepackage{graphicx}
+%\usepackage{subfig}
+\usepackage{stmaryrd}
+
+% Drawing trees
+  \usepackage{verbatim}
+  \usepackage{tikz}
+  \usetikzlibrary{positioning}
+  \usetikzlibrary{arrows}
+%\usepackage{graphicx}
+%\usepackage{times}
+%\usepackage{graphics}
+%\usepackage{amssymb}
+%\usepackage{stmaryrd}
+%\usepackage{subfig}
+%\usepackage{soul}
+%\usepackage{ulem}
+\usetheme{Berlin}
+%\usepackage{array}
+\addtobeamertemplate{footline}{\insertframenumber/\inserttotalframenumber}
+
+\newtheorem{defi}{Definition}
+\setbeamertemplate{navigation symbols}{}
+\newenvironment{boxedSC}
+  {\begin{center}
+  \begin{tabular}{|p{0.9\textwidth}|}
+  \hline
+  }
+  {
+  \\\hline
+  \end{tabular}
+  \end{center}
+  }
+\newcommand\ExAside[1]{\begin{boxedSC} {\center #1} \end{boxedSC}}
+
+\newcommand\SC[1]{{\color{violet}{\it \bf Simon :} #1}}
+
+\title{Web data management : bad academic practices in business study}
+\author{Priyanka Aravindan and Simon Coumes}
+\date{}
+  
 \begin{document}
 
 \begin{frame}
-  \(a=b\)
+%\vspace{-1cm}
+\titlepage
 \end{frame}
 
+\begin{frame}{Overview}
+  Hello
+  \end{frame}
+
+\begin{frame}{Data sources}
+  The plan.
+  \end{frame}
+
+\begin{frame}{Data sources}
+  Isssues.
+  \end{frame}
+
+\begin{frame}{Measures}
+  A teaser.
+  \end{frame}
+
+\begin{frame}{The semantic scholar dataset}
+  Hello
+  \end{frame}
+
+\begin{frame}{Filter the data}
+  Hello
+  \end{frame}
+
+\begin{frame}{Citation count}
+  Hello
+  \end{frame}
+
+\begin{frame}{Citation rings}
+  Explanation.
+  \end{frame}
+
+\begin{frame}{Citation rings : algorithm}
+  Hello
+  \end{frame}
+
+\begin{frame}{citation rings : results}
+  Hello
+  \end{frame}
+
+\begin{frame}{Self citation}
+  Explain.
+  \end{frame}
+
+\begin{frame}{Self citation}
+  Results.
+  \end{frame}
+
+\begin{frame}{Parasits}
+  Hello
+  \end{frame}
+
+\begin{frame}{Conclusion}
+  Hello
+  \end{frame}
+
+%\begin{frame}{In a few words}
+%    \begin{columns}
+%    \begin{column}{0.5\textwidth}
+%        \begin{itemize}
+%            \item Title : Fast Genetic Algorithms
+%            \item Date : 2017
+%            \end{itemize}
+%        \end{column}
+%    \begin{column}{0.5\textwidth}  %%<--- here
+%        \begin{itemize}
+%            \item Authors : Benjamin Doerr, Huu Phuoc Le, Regis Makhmara, Ta Duy Nguyen
+%            \item Cited : 121
+%            \end{itemize}
+%        \end{column}
+%    \end{columns}
+%    
+%    \vspace{0.5cm}
+%    
+%    Improves on the (1+1) EA, seen as a case study. Introduces \textbf{Fast Genetic Algorithm}. \\
+%    $\rightarrow$ superexponential time gain (for the specific kind of goal functions at hand)
+%    
+%    \end{frame}
+%
+%\begin{frame}{Jump functions}
+%
+%    Maximizing Jump functions puts emphasis on the need to change multiple bits to escape local optimums. \\
+%
+%    \begin{equation}
+%    JUMP_{m,n}(x) = \begin{cases}
+%    m+\sum_{i=1}^{n} x_{i}  \text{ if }
+%        \begin{cases}
+%            \text{ either } \sum_{i=1}^{n} x_{i} \leq n-m  \\
+%            \text{ or } \sum_{i=1}^{n} x_{i}= n
+%        \end{cases}
+%    \\
+%    n-\sum_{i=1}^{n} x_{i} \text{ otherwise }
+%    \end{cases}
+%    \end{equation}
+%    \end{frame}
+%
+%\begin{frame}{Jump functions}
+%    \begin{figure}
+%        \centering
+%        \includegraphics[scale = 0.2]{images/kitty.jpeg}
+%        \caption{The function $JUMP_{n,m}$ for n = 50 and m = 10}
+%    \end{figure}    
+%    \end{frame}
+%
+%\begin{frame}{The standard mutation rate}
+%    (1+1) EA with $\frac{1}{n}$ mutation rate $\rightarrow$ $O(n^{m} + n\log n)$ worst case time complexity \\
+%    
+%    \vspace{1.5cm}
+%    
+%    The goal is to improve on this by only changing the mutation rate to $\frac{m}{n}$. 
+%    
+%    
+%    \end{frame}
+%    
+%    \begin{frame}{First results}
+%    Mutation rate $\frac{m}{n}$ :
+%    
+%    \vspace{0.3cm}
+%    $\frac{1}{2}\frac{n^m}{m^m}(\frac{n}{n-m})^{n-m}<T_{\frac{m}{n}}<3\frac{n^m}{m^m}(\frac{n}{n-m})^{n-m}$
+%    
+%    \vspace{0.7cm}
+%    For a deviation of $\frac{m}{n}\epsilon$ the deviation factor is at least $\frac{1}{6}exp(\frac{m\epsilon^2}{3})$).
+%    \end{frame}
+%    
+%    
+%\begin{frame}{Fmut}
+%    The new algorithms are called FEA$_{\beta}$.
+%    Randomly choose the mutation rate $X$ to be used at each iteration step. \\
+%    
+%    \vspace{0.3cm}
+%    
+%    The article chose a discrete power-law distribution with parameter $\beta$.  \\
+%
+%    \begin{center}
+%    For $j \in [1,\frac{n}{2}]$, 
+%    $\mathbb{P}(X = j) = 1 / (j^\beta \sum_{i=1}^{n / 2}i^{-\beta}) $
+%    \end{center}
+%    
+%    \end{frame}
+%
+%\begin{frame}{Fmut}
+%    \begin{figure}
+%        \centering
+%	\includegraphics[scale = 0.5]{images/kitty.jpeg}
+%        \label{fig:my_label}
+%    \end{figure}
+%    \end{frame}
+%    
+%\begin{frame}{Conclusion}
+%    \begin{itemize}
+%        \item Best theoretical rate for jump functions : $\frac{m}{n}$
+%        \item This depends on knowing $m$ $\rightarrow$ introduce Fast Genetic Algorithm
+%        \item Almost as good for jump functions (loss polynomial in $m$)
+%        \item Concretely better than (1+1) EA on vertex cover
+%        \item Just an idea introduction on a simple basis $\rightarrow$ more to do on the topic
+%        \end{itemize}
+%    \end{frame}
+%
 \end{document}
