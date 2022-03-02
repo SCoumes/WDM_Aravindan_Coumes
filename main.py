@@ -74,7 +74,7 @@ elif args[1] == "self_citation" :
     from citationCount import getTableFromDisk
     citacountpath = args[2]
     citationCount = getTableFromDisk(citacountpath)
-    printStatsFromTables(citationCountTables)
+    printStatsFromTables(citationCount)
 else : 
     print("Unknown command")
 
