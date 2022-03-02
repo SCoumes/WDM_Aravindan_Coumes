@@ -33,7 +33,7 @@ def checkRing(table, mainAuth, candi1, candi2) :
 def getRingsFromCandidates(table, author, candidates) :
     ringList = []
     for (index1, candi1) in enumerate(candidates) : 
-        for index2 in range(index1 + 1, len(candidates)) :
+        for index2 in range(index1 + 2, len(candidates)) :
             candi2 = candidates[index2]
             if (table[author][candi1] + table[author][candi2]) * 2 < table[author]["total"] :
                 break
@@ -46,7 +46,7 @@ def getRingsFromTable(citationCountTable) :
     allRings = []
     for author in table.keys() :
         candidates = getCandidates(author, table[author])
-        candidates.sort(key = lambda a : a[1])
+        candidates.sort(reverse = True, key = lambda a : a[1])
         clean_candidates = [pair[0] for pair in candidates]
         allRings = allRings + getRingsFromCandidates(table, author, clean_candidates)
     return allRings  
